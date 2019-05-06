@@ -17,7 +17,7 @@ namespace Arch.Cqrs.Contracts.Paging
             return new Paging<TOut>
             {
                 SortColumn = entrada == null ? "" : entrada.SortColumn,
-                Top = entrada?.Top ?? Int32.MaxValue,
+                Top = entrada?.Top ?? int.MaxValue,
                 Skip = entrada?.Skip ?? 0,
                 SortDirection = entrada?.SortDirection ?? SortDirection.Ascending
             };

@@ -28,7 +28,7 @@ namespace Arch.Cqrs.Handlers
             }
             if (_databaseContext.Customers.Any(c => c.Email == command.Email))
             {
-                _notificationContext.AddNotification("Name", "Email already exists");
+                _notificationContext.AddNotification("Email", "Email already exists");
             }
             else
             {

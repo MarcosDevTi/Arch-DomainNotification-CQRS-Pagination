@@ -8,6 +8,7 @@ using Arch.Cqrs.Client.Query.Customer.Queries;
 using Arch.Cqrs.Client.Test;
 using Arch.Cqrs.Contracts;
 using Arch.Cqrs.Contracts.Paging;
+using Arch.Domain;
 using Arch.Infra.Data;
 
 namespace Arch.Cqrs.Handlers

@@ -15,6 +15,6 @@ namespace Arch.Cqrs.Client.Query.Customer.Queries
             Search = search ?? "";
         }
         public Paging<CustomerIndex> Paging { get; private set; }
-        public string Search { get; private set; }
+        public string Search { get; private set; } = "";
     }
 }

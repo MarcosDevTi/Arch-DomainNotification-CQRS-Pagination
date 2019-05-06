@@ -44,7 +44,9 @@ namespace Arch.Api.Controllers
         {
            
             _processor.Send(customer);
+
             if(_notificationContext.HasNotifications)
+
                 return Request.CreateResponse(HttpStatusCode.BadRequest, _notificationContext.Notifications);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
