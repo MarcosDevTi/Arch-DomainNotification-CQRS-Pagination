@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E6932972-EC02-4499-B87A-AF51FC030C4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Arch.Cqrs.Client</RootNamespace>
+    <AssemblyName>Arch.Cqrs.Client</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentValidation.8.3.0\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Command\Cart\AddItemCart.cs" />
+    <Compile Include="Command\Customer\CreateCustomer.cs" />
+    <Compile Include="Command\Customer\CustomerCommand.cs" />
+    <Compile Include="Command\Customer\Validation\CreateCustomerValidation.cs" />
+    <Compile Include="Command\Customer\Validation\CustomerCommandValidation.cs" />
+    <Compile Include="Command\OrderItem\CreateOrderItem.cs" />
+    <Compile Include="Command\OrderItem\DeleteOrderItem.cs" />
+    <Compile Include="Command\OrderItem\UpdateOrderItem.cs" />
+    <Compile Include="Command\Order\AddProductToCart.cs" />
+    <Compile Include="Command\Order\CreateOrder.cs" />
+    <Compile Include="Command\Order\DeleteOrder.cs" />
+    <Compile Include="Command\Order\UpdateOrder.cs" />
+    <Compile Include="Command\Order\Validation\CreateOrderValidation.cs" />
+    <Compile Include="Command\Order\Validation\DeleteOrderValidation.cs" />
+    <Compile Include="Command\Order\Validation\UpdateOrderValidation.cs" />
+    <Compile Include="Command\Product\CreateProduct.cs" />
+    <Compile Include="Command\Product\DeleteProduct.cs" />
+    <Compile Include="Command\Product\ProductCommand.cs" />
+    <Compile Include="Command\Product\UpdateProduct.cs" />
+    <Compile Include="Command\Product\Validation\CreateProductValidation.cs" />
+    <Compile Include="Command\Product\Validation\DeleteProductValidation.cs" />
+    <Compile Include="Command\Product\Validation\ProductCommandValidation.cs" />
+    <Compile Include="Command\Product\Validation\UpdateProductValidation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\Customer\Models\CustomerDetails.cs" />
+    <Compile Include="Query\Customer\Models\CustomerHistory.cs" />
+    <Compile Include="Query\Customer\Models\CustomerIndex.cs" />
+    <Compile Include="Query\Customer\Queries\GetCustomerDetails.cs" />
+    <Compile Include="Query\Customer\Queries\GetCustomersIndex.cs" />
+    <Compile Include="Query\OrderItem\Models\Cart.cs" />
+    <Compile Include="Query\OrderItem\Models\OrderItemIndex.cs" />
+    <Compile Include="Query\OrderItem\Queries\GetCart.cs" />
+    <Compile Include="Query\OrderItem\Queries\GetOrderItensIndex.cs" />
+    <Compile Include="Query\Product\Models\ProductDetails.cs" />
+    <Compile Include="Query\Product\Models\ProductIndex.cs" />
+    <Compile Include="Query\Product\Queries\GetProductDetails.cs" />
+    <Compile Include="Query\Product\Queries\GetProductsIndex.cs" />
+    <Compile Include="Test\CustomerItemTest.cs" />
+    <Compile Include="Test\GetCustomersTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Arch.Cqrs.Contracts\Arch.Cqrs.Contracts.csproj">
+      <Project>{F0526746-F43C-41E5-94F5-46A8DD4CE584}</Project>
+      <Name>Arch.Cqrs.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Arch.Domain.Core\Arch.Domain.Core.csproj">
+      <Project>{A388BAF0-F5C0-47B9-9885-66712C72019F}</Project>
+      <Name>Arch.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Arch.Domain\Arch.Domain.csproj">
+      <Project>{F63D7B9E-2630-45AE-8B12-2D7A7027AE70}</Project>
+      <Name>Arch.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
