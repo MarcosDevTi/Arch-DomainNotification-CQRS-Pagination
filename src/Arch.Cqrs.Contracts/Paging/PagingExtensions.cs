@@ -16,10 +16,10 @@ namespace Arch.Cqrs.Contracts.Paging
         {
             return new Paging<TOut>
             {
-                SortColumn = entrada.SortColumn,
-                Top = entrada.Top,
-                Skip = entrada.Skip,
-                SortDirection = entrada.SortDirection
+                SortColumn = entrada == null ? "" : entrada.SortColumn,
+                Top = entrada?.Top ?? Int32.MaxValue,
+                Skip = entrada?.Skip ?? 0,
+                SortDirection = entrada?.SortDirection ?? SortDirection.Ascending
             };
         }
 

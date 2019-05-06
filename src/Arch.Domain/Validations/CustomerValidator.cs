@@ -11,9 +11,14 @@ namespace Arch.Domain.Validations
     {
         public CustomerValidator()
         {
+            var maxLengthName = 2;
+
             RuleFor(c => c.BirthDate)
                 .Must(UnderAge)
                 .WithMessage("The customer must have 18 years or more");
+            RuleFor(c => c.Name)
+                .MinimumLength(maxLengthName)
+                .WithMessage($"Minimum Length {maxLengthName}");
         }
 
         private bool UnderAge(DateTime date) => 
