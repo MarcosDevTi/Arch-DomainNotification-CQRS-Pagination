@@ -11,6 +11,10 @@ using Arch.Cqrs.Client.Test;
 using Arch.Cqrs.Contracts;
 using Arch.Cqrs.Contracts.DomainNotifications;
 using Arch.Cqrs.Contracts.Paging;
+using Arch.Domain;
+using Arch.Domain.Core;
+using Arch.Domain.Repository;
+using Arch.Domain.Specifications;
 
 namespace Arch.Api.Controllers
 {
@@ -18,18 +22,40 @@ namespace Arch.Api.Controllers
     public class CustomersController : ApiController
     {
         private readonly IProcessor _processor;
+        private readonly ICustomerRepository _customerRepository;
         private readonly NotificationContext _notificationContext;
 
-        public CustomersController(IProcessor processor, NotificationContext notificationContext)
+        public CustomersController(IProcessor processor, NotificationContext notificationContext, ICustomerRepository customerRepository)
         {
             _processor = processor;
             _notificationContext = notificationContext;
+            _customerRepository = customerRepository;
         }
 
         [HttpGet, Route("")]
         public IHttpActionResult Get([FromUri]Paging<CustomerIndex> paging, string search = null)
         {
+            var result = new CustomerPremium().And(new CustomerOfAge()).ToExpression();
             return Ok(_processor.Get(new GetCustomersIndex(paging, search)));
+        }
+
+
+        [HttpGet, Route("")]
+        public IHttpActionResult Get([FromUri]Paging<Customer> paging, bool premium, bool ofAge, string search = null)
+        {
+            var spec = Specification<Customer>.All;
+            if (premium)
+            {
+                spec.And(new CustomerPremium());
+            }
+
+            if (ofAge)
+            {
+                spec.And(new CustomerOfAge());
+            }
+           
+            var resultOk = _customerRepository.FindCustomers(spec, paging);
+            return Ok(resultOk);
         }
 
         [HttpGet, Route("{id}")]

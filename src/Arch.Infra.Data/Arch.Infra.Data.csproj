@@ -64,8 +64,13 @@
     <Compile Include="InMemoryDatabaseContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CustomerRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Arch.Cqrs.Contracts\Arch.Cqrs.Contracts.csproj">
+      <Project>{F0526746-F43C-41E5-94F5-46A8DD4CE584}</Project>
+      <Name>Arch.Cqrs.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Arch.Domain.Core\Arch.Domain.Core.csproj">
       <Project>{A388BAF0-F5C0-47B9-9885-66712C72019F}</Project>
       <Name>Arch.Domain.Core</Name>

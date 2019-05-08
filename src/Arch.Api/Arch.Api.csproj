@@ -164,6 +164,14 @@
       <Project>{F0526746-F43C-41E5-94F5-46A8DD4CE584}</Project>
       <Name>Arch.Cqrs.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Arch.Domain.Core\Arch.Domain.Core.csproj">
+      <Project>{A388BAF0-F5C0-47B9-9885-66712C72019F}</Project>
+      <Name>Arch.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Arch.Domain\Arch.Domain.csproj">
+      <Project>{F63D7B9E-2630-45AE-8B12-2D7A7027AE70}</Project>
+      <Name>Arch.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Arch.Infra.IoC\Arch.Infra.IoC.csproj">
       <Project>{F1517DD2-ABA0-47DB-895C-588B955CFB08}</Project>
       <Name>Arch.Infra.IoC</Name>
