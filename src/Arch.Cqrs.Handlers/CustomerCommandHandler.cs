@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Arch.Cqrs.Client.Command.Customer;
 using Arch.Cqrs.Contracts;
 using Arch.Cqrs.Contracts.DomainNotifications;
@@ -20,7 +21,7 @@ namespace Arch.Cqrs.Handlers
 
         public void Handle(CreateCustomer command)
         {
-            var customer = new Customer(command.Name, command.Email, command.BirthDate);
+            var customer = new Customer(command.Name, command.Email, command.BirthDate, command.SubscriptionDate);
 
             if (customer.Invalid)
             {

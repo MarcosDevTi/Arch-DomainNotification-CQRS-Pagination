@@ -55,6 +55,7 @@
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ICustomerRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Specifications\CustomerPremium.cs" />
     <Compile Include="Validations\CustomerValidator.cs" />
   </ItemGroup>

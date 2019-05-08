@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -25,5 +26,7 @@ namespace Arch.Cqrs.Contracts.Paging
         public IEnumerator<T> GetEnumerator() => Items.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => Items.GetEnumerator();
+
+        
     }
 }

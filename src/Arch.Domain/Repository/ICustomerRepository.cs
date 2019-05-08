@@ -12,6 +12,6 @@ namespace Arch.Domain.Repository
     {
         PagedResult<Customer> GetAll();
         Customer GetCustomerById(Guid id);
-        PagedResult<Customer> FindCustomers(Specification<Customer> specification, Paging<Customer> paging);
+        PagedResult<TReturn> FindCustomers<TReturn>(Specification<Customer> specification, Paging<Customer> paging);
     }
 }

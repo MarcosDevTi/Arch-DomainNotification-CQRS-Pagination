@@ -10,16 +10,15 @@ using Arch.Domain.Repository;
 
 namespace Arch.Infra.Data.Repository
 {
-    public class CustomerRepository: ICustomerRepository
+    public class Repository<T>: IRepository<T>
     {
         private readonly ArchDbContext _context;
 
-        public CustomerRepository(ArchDbContext context)
+        public Repository(ArchDbContext context)
         {
             _context = context;
         }
-
-        public PagedResult<Customer> GetAll()
+        public PagedResult<T> GetAll()
         {
             throw new NotImplementedException();
         }
@@ -29,8 +28,9 @@ namespace Arch.Infra.Data.Repository
             throw new NotImplementedException();
         }
 
-        public PagedResult<TReturn> FindCustomers<TReturn>(Specification<Customer> specification,
-            Paging<Customer> paging) =>
-            _context.Customers.Where(specification.ToExpression()).GetPagedResult<Customer, TReturn>(paging);
+        public PagedResult<TReturn> FindCustomers<TReturn>(Specification<T> specification, Paging<T> paging)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

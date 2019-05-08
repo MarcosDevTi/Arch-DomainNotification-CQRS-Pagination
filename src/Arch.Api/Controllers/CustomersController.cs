@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Arch.Api.Models;
 using Arch.Cqrs.Client.Command.Customer;
 using Arch.Cqrs.Client.Query.Customer.Models;
 using Arch.Cqrs.Client.Query.Customer.Queries;
@@ -33,10 +34,13 @@ namespace Arch.Api.Controllers
         }
 
         [HttpGet, Route("")]
-        public IHttpActionResult Get([FromUri]Paging<CustomerIndex> paging, string search = null)
+        public IHttpActionResult Get([FromUri]Paging<Customer> paging, string search = null)
         {
-            var result = new CustomerPremium().And(new CustomerOfAge()).ToExpression();
-            return Ok(_processor.Get(new GetCustomersIndex(paging, search)));
+            var specification = new CustomerPremium().And(new CustomerOfAge());
+
+           var customers = _customerRepository.FindCustomers<CustomerDto>(specification, paging);
+
+            return Ok(customers);
         }
 
 
@@ -54,7 +58,7 @@ namespace Arch.Api.Controllers
                 spec.And(new CustomerOfAge());
             }
            
-            var resultOk = _customerRepository.FindCustomers(spec, paging);
+            var resultOk = _customerRepository.FindCustomers<CustomerDto>(spec, paging);
             return Ok(resultOk);
         }
 

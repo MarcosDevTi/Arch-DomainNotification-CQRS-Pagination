@@ -24,6 +24,7 @@ namespace Arch.Cqrs.Client.Command.Customer
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         [DisplayName("Birth Date")]
         public DateTime BirthDate { get; set; }
+        public DateTime SubscriptionDate { get; set; }
 
         public string Street { get; set; }
         public string Number { get; set; }
